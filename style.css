@@ -515,23 +515,50 @@ footer h3 {
     margin-top: 50px;
 }
 
-/* Add to cart btn in card */
-.add-btn {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    background: white;
-    border: 1px solid var(--red);
-    color: var(--red);
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
 .add-btn:hover {
     background: var(--red);
     color: white;
+}
+
+/* New Plus Button Style */
+.card-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* Align bottom */
+    margin-top: 10px;
+}
+
+.card-footer-row .desc {
+    margin: 0;
+    margin-right: 15px;
+    flex: 1;
+}
+
+.add-btn-plus {
+    background: #f0f0f0;
+    color: var(--dark);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.add-btn-plus:hover {
+    background: var(--red);
+    color: white;
+    transform: scale(1.1);
+}
+
+.add-btn-plus:active {
+    transform: scale(0.95);
 }
 
 /* Category Headers */

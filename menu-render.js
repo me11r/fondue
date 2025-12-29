@@ -84,10 +84,12 @@ function createCard(item) {
                 <span>${item.name}</span>
                 <span class="price">${item.price}</span>
             </div>
-            <p class="desc">${item.desc}</p>
-            <button class="add-btn" onclick="addToCart(${item.id})">
-                В корзину
-            </button>
+            <div class="card-footer-row">
+                <p class="desc">${item.desc}</p>
+                <button class="add-btn-plus" onclick="addToCart(${item.id})">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </div>
     `;
     return card;
@@ -193,7 +195,7 @@ function renderCartModalItems() {
         let numericPrice = 0;
         let priceStr = item.price.toString();
 
-        // Если двойная цена, берем первую для расчета (упрощение)
+        // Если двойная цена, берем первую для расчета
         if (priceStr.includes("/")) {
             priceStr = priceStr.split("/")[0];
         }
