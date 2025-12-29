@@ -1,575 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fondue - Swiss Resto Du Club - Меню</title>
+    <title>Fondue — Swiss Resto Du Club</title>
+    <meta name="description" content="Fondue — остров европейского уюта в Астане.">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary-red: #C8102E; /* A Swiss-style red */
-            --bg-color: #f4f1ea; /* Textured paper off-white look */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --border-color: #ddd;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.5;
-        }
-
-        h1, h2, h3, .brand-font {
-            font-family: 'Merriweather', serif;
-            color: var(--primary-red);
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px; /* Offset for sticky header */
-        }
-
-        /* --- Header --- */
-        header {
-            text-align: center;
-            padding: 20px 15px;
-            background: var(--bg-color);
-            border-bottom: 2px solid var(--primary-red);
-        }
-
-        .logo h1 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-            font-style: italic;
-        }
-
-        .logo p {
-            letter-spacing: 1px;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .resto-status {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-
-        /* --- Sticky Category Nav --- */
-        .sticky-nav-container {
-            position: sticky;
-            top: 0;
-            background: var(--bg-color);
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .category-nav {
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 0 15px;
-            /* Hide scrollbar for neatness */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .category-nav::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-
-        .nav-item {
-            display: inline-block;
-            padding: 8px 15px;
-            margin-right: 10px;
-            text-decoration: none;
-            color: var(--text-dark);
-            border: 1px solid var(--primary-red);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item.active, .nav-item:hover {
-            background-color: var(--primary-red);
-            color: white;
-        }
-
-        /* --- Menu Container --- */
-        .menu-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px 15px;
-        }
-
-        .menu-section {
-            margin-bottom: 35px;
-        }
-
-        .section-title {
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-            position: relative;
-        }
-        
-        /* Decorative lines around section headers */
-        .section-title::before, .section-title::after {
-            content: "";
-            display: inline-block;
-            width: 30px;
-            height: 2px;
-            background-color: var(--primary-red);
-            vertical-align: middle;
-            margin: 0 10px;
-        }
-
-        /* --- Menu Items --- */
-        .menu-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dotted var(--border-color);
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-weight: 500;
-            font-size: 1.05rem;
-        }
-
-        .item-name {
-            color: var(--text-dark);
-            padding-right: 10px;
-        }
-
-        .item-price {
-            color: var(--primary-red);
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        
-        .item-desc {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: #eae6dc;
-            padding: 30px 15px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-        }
-        
-        .footer-info p {
-            margin-bottom: 8px;
-        }
-
-        .service-charge-note {
-            margin: 20px 0;
-            font-weight: bold;
-            color: var(--primary-red);
-        }
-
-        .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-red);
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.2s;
-        }
-        .social-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .amenities-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .amenities-list li {
-            background: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            border: 1px solid #ddd;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <div class="logo">
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="subtitle">Остров европейского уюта в Астане</span>
             <h1>Fondue</h1>
-            <p>Swiss Resto Du Club</p>
+            <p class="tagline">Swiss Resto Du Club</p>
+            <a href="#menu-content" class="hero-btn">Смотреть меню</a>
         </div>
-        <div class="resto-status" id="status-box">
-            </div>
     </header>
 
+    <!-- О ресторане -->
+    <section class="about">
+        <div class="about-container">
+            <video autoplay muted loop playsinline class="about-video">
+                <source src="images/AQMVnCxQ_gu1p7ZQyCVQ09qzXOMK9WXkK_tDX3EMgMDwJrRlPZPlEANuG4etkxH.mp4"
+                    type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="about-text">
+                <h2>О нашем ресторане</h2>
+                <p>Fondue — это остров европейского уюта в центре Астаны. Мы предлагаем лучшие швейцарские фондю,
+                    раклеты и завтраки, созданные с любовью к деталям и качеству ингредиентов.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY NAV (JS РЕНДЕРИТ СЮДА) -->
     <div class="sticky-nav-container">
-        <nav class="category-nav" id="category-nav">
-            </nav>
+        <nav class="category-nav" id="category-nav"></nav>
     </div>
 
-    <main class="menu-container" id="menu-content">
-        </main>
+    <!-- MENU (JS РЕНДЕРИТ СЮДА) -->
+    <main class="menu-container" id="menu-content"></main>
 
+    <!-- Галерея -->
+    <section class="gallery">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <img src="images/ce2e986d-4f57-4cb0-a71c-4a44e4d3990a.jpg" alt="Фото блюда">
+            <img src="images/6ed0aafc-05c4-4657-bda3-85b9fc181802.jpg" alt="Фото ресторана">
+            <img src="images/5262632d-b938-4e0b-a7c4-5091b09b6760.jpg" alt="Интерьер">
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <a href="https://wa.me/77067179070" class="reserve-btn">
+        Забронировать стол
+    </a>
+
+    <!-- FOOTER -->
     <footer>
-        <div class="service-charge-note">
-            ОБСЛУЖИВАНИЕ 10%
+        <div class="footer-inner">
+            <div>
+                <h3>Fondue</h3>
+                <p>Swiss Resto Du Club</p>
+            </div>
+
+            <div>
+                <p>📍 Алихан Бокейхан, 25Б, Астана</p>
+                <p>⏰ Вт–Вс 10:00–23:00 · Пн выходной</p>
+                <p class="service">Обслуживание 10%</p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.instagram.com/fondue_ast"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/77067179070"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:+77067179070"><i class="fas fa-phone"></i></a>
+            </div>
         </div>
 
-        <div class="social-links">
-            <a href="https://www.instagram.com/fondue_ast" target="_blank" class="social-btn">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/77067179070" target="_blank" class="social-btn" style="background-color: #25D366;">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="tel:+77067179070" class="social-btn" style="background-color: #333;">
-                <i class="fas fa-phone"></i>
-            </a>
-        </div>
-
-        <div class="footer-info">
-            <p><i class="fas fa-map-marker-alt"></i> Улица Алихан Бокейхан, 25Б, Астана (ЖК Венский квартал)</p>
-            <p><i class="far fa-clock"></i> Вт — Вс: 10:00–23:00 (Пн: Выходной)</p>
-        </div>
-
-        <ul class="amenities-list">
-             <li>Wi-Fi</li>
-             <li>Столики на улице</li>
-             <li>Доступная среда</li>
-             <li>Оплата по QR-коду</li>
-        </ul>
-        
-        <p style="margin-top: 20px; font-size: 0.8rem;">© 2023 Fondue Resto. All rights reserved.</p>
+        <p class="copyright">
+            © <span id="year"></span> Fondue Resto
+        </p>
     </footer>
 
-
     <script>
-        // --- Configuration and Data ---
-
-        // Helper to determine if restaurant is open right now
-        function checkOpenStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
-            const hour = now.getHours();
-
-            const statusBox = document.getElementById('status-box');
-            let isOpen = false;
-
-            // Monday (day 1) is closed
-            if (day !== 1) {
-                // Open Tuesday-Sunday from 10 to 23
-                if (hour >= 10 && hour < 23) {
-                    isOpen = true;
-                }
-            }
-
-            if (isOpen) {
-                statusBox.innerHTML = '<span class="status-indicator" style="background: green;"></span>Сейчас открыто (до 23:00)';
-            } else {
-                 statusBox.innerHTML = '<span class="status-indicator" style="background: red;"></span>Сейчас закрыто';
-            }
-        }
-
-
-        /* MENU DATA STRUCTURE
-           This is where you edit the menu.
-           - Use 'price' for standard numbers.
-           - Use 'priceString' for complex pricing (like drinks with multiple sizes).
-        */
-        const menuData = [
-            {
-                id: "alpine",
-                title: "Альпийская Кухня",
-                items: [
-                    { name: "Классический фондю", price: 13990 },
-                    { name: "Тартар из говядины", price: 4590 },
-                    { name: "Тартар из семги", price: 4790 },
-                    { name: "Раклет", price: 1990 },
-                    { name: "Сырная тарелка", price: 6990 },
-                    { name: "Валезианская тарелка", price: 8990 }
-                ]
-            },
-            {
-                id: "breakfast",
-                title: "Завтраки",
-                items: [
-                    { name: "Каша овсяная с мёдом и орехами", price: 1790 },
-                    { name: "Шакшука с яйцом пашот", price: 2590 },
-                    { name: "Английский завтрак", price: 3490 },
-                    { name: "Французский завтрак", price: 3490 },
-                    { name: "Картофельный драник с сёмгой", price: 3590 },
-                    { name: "Сырники с облепихой и халвой", price: 2490 }
-                ]
-            },
-            {
-                id: "starters",
-                title: "Стартеры",
-                items: [
-                    { name: "Брускетта с сёмгой и гуакамоле", price: 5990 },
-                    { name: "Брускетта с ростбифом и вялеными томатами", price: 4790 },
-                    { name: "Брускетта с овощной сальсой", price: 2290 },
-                    { name: "Вителло тоннато", price: 5890 },
-                    { name: "Запечённые баклажаны", price: 2590 },
-                    { name: "Цезарь с курицей / с сёмгой / с креветками", price: 4590 },
-                    { name: "Греческий салат с пряной фетой", price: 2990 },
-                    { name: "Fish & Chips с соусом тартар", price: 4990 },
-                    { name: "Хлебная корзина", price: 2190 }
-                ]
-            },
-            {
-                id: "pizza",
-                title: "Пицца",
-                items: [
-                    { name: "Четыре сыра", price: 3890 },
-                    { name: "Маргарита", price: 3290 },
-                    { name: "Пепперони", price: 3690 },
-                    { name: "С голубым сыром и грушей", price: 3790 }
-                ]
-            },
-             {
-                id: "hotdishes",
-                title: "Горячие Блюда",
-                items: [
-                    { name: "Медальоны с перечным соусом", price: 7690 },
-                    { name: "Телячьи щёчки с картофельным кремом", price: 8690 },
-                    { name: "Филе судака с овощами", price: 4890 },
-                    { name: "Стейк из сёмги с лимонным рисом", price: 8590 },
-                    { name: "Шницель с овощами", price: 3990 },
-                    { name: "Бедро цыплёнка с вешенками и шпинатом", price: 4390 },
-                    { name: "Жульен классический", price: 3990 }
-                ]
-            },
-            {
-                id: "soups",
-                title: "Супы",
-                items: [
-                    { name: "Куриный суп", price: 1990 },
-                    { name: "Тыквенный крем-суп с дор-блю", price: 1890 },
-                    { name: "Грибной крем-суп", price: 2690 },
-                    { name: "Охотничья похлёбка с говяжьими щёчками", price: 5190 }
-                ]
-            },
-            {
-                id: "pasta",
-                title: "Паста",
-                items: [
-                    { name: "Арабьятта с говядиной", price: 3590 },
-                    { name: "Лингвини с креветками", price: 5390 },
-                    { name: "Паста Болоньезе", price: 4590 },
-                    { name: "Альфредо с курицей", price: 3290 }
-                ]
-            },
-            {
-                id: "fastfood",
-                title: "Fast Food",
-                items: [
-                    { name: "Бургер с рубленой говядиной", price: 5290 },
-                    { name: "Бургер куриный", price: 4990 },
-                    { name: "Картофель фри с пармезаном", price: 1990 },
-                    { name: "Батат фри с пармезаном", price: 1990 },
-                    { name: "Нагетсы", price: 2390 }
-                ]
-            },
-             {
-                id: "desserts",
-                title: "Десерты",
-                items: [
-                    { name: "Чуррос с соленой карамелью", price: 2390 },
-                    { name: "Шоколадный фондан", price: 2590 },
-                    { name: "Крем-брюле", price: 3490 }
-                ]
-            },
-            {
-                id: "drinks_tea",
-                title: "Авторские Чай",
-                items: [
-                    { name: "Черный чай", priceString: "590/1 790" },
-                    { name: "Эрл грей", priceString: "690/1 990" },
-                    { name: "Зеленый чай", priceString: "590/1 790" },
-                    { name: "Молочный улун", priceString: "1 990" },
-                    { name: "Облепиха-имбирь", priceString: "2 490" },
-                    { name: "Ташкентский", priceString: "2 490" },
-                    { name: "Фруктовый", priceString: "2 490" },
-                    { name: "Цитрусовый", priceString: "2 490" }
-                ]
-            },
-            {
-                id: "drinks_lemonade",
-                title: "Лимонады",
-                items: [
-                    { name: "Классический", priceString: "2 490" },
-                    { name: "Ягодный микс", priceString: "2 490" },
-                    { name: "Цитрусовый", priceString: "2 490" },
-                    { name: "Манго-маракуйя", priceString: "2 490" },
-                    { name: "Гранат-базилик", priceString: "2 490" },
-                    { name: "Киви-яблоко", priceString: "2 490" }
-                ]
-            },
-            {
-                id: "drinks_coffee",
-                title: "Кофе",
-                // Adding descriptions for sizes based on image 2
-                items: [
-                    { name: "Эспрессо", desc: "(50мл/100мл)", priceString: "690/890" },
-                    { name: "Американо", desc: "(200мл/300мл)", priceString: "890/990" },
-                    { name: "Американо с молоком", desc: "(200мл/300мл)", priceString: "990/1 090" },
-                    { name: "Капучино", desc: "(200мл/300мл)", priceString: "1 190/1 290" },
-                    { name: "Латте", desc: "(200мл/300мл)", priceString: "1 090/1 190" }
-                ]
-            }
-
-        ];
-
-
-        // --- Rendering Logic ---
-
-        const currencySymbol = "₸";
-
-        // Helper to format price numbers with spaces (e.g., 13 990)
-        function formatPrice(price) {
-             return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        }
-
-
-        function renderMenu() {
-            const navContainer = document.getElementById('category-nav');
-            const menuContainer = document.getElementById('menu-content');
-
-            menuData.forEach((category, index) => {
-                // 1. Create Nav Link
-                const navLink = document.createElement('a');
-                navLink.href = `#${category.id}`;
-                navLink.className = 'nav-item';
-                navLink.textContent = category.title;
-                if (index === 0) navLink.classList.add('active'); // Make first active initially
-                navContainer.appendChild(navLink);
-
-                // 2. Create Menu Section
-                const section = document.createElement('section');
-                section.id = category.id;
-                section.className = 'menu-section';
-
-                // Section Title
-                const title = document.createElement('h2');
-                title.className = 'section-title';
-                title.textContent = category.title;
-                section.appendChild(title);
-
-                // Items list
-                category.items.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'menu-item';
-
-                    // Determine how to display price
-                    let displayPrice = "";
-                    if (item.price) {
-                        displayPrice = `${formatPrice(item.price)} <small>${currencySymbol}</small>`;
-                    } else if (item.priceString) {
-                         displayPrice = `${item.priceString} <small>${currencySymbol}</small>`;
-                    }
-
-                    let descriptionHtml = "";
-                    if (item.desc) {
-                        descriptionHtml = `<div class="item-desc">${item.desc}</div>`;
-                    }
-
-                    itemDiv.innerHTML = `
-                        <div class="item-header">
-                            <span class="item-name">${item.name}</span>
-                            <span class="item-price">${displayPrice}</span>
-                        </div>
-                        ${descriptionHtml}
-                    `;
-                    section.appendChild(itemDiv);
-                });
-
-                menuContainer.appendChild(section);
-            });
-        }
-
-        // Simple scroll spy to highlight active nav item
-        function highlightNavOnScroll() {
-            const sections = document.querySelectorAll('.menu-section');
-            const navLinks = document.querySelectorAll('.nav-item');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    // Offset for sticky header height
-                    if (pageYOffset >= (sectionTop - 120)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
-                        // Optional: auto-scroll the nav bar itself to keep active item in view
-                        // link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                    }
-                });
-            });
-        }
-
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            checkOpenStatus();
-            renderMenu();
-            highlightNavOnScroll();
-        });
-
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+
+    <script src="menu-data.js"></script>
+    <script src="menu-render.js"></script>
+    <script src="main.js"></script>
+
 </body>
+
 </html>
