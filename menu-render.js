@@ -147,11 +147,17 @@ function updateActiveNav(activeId) {
 
 // --- CART LOGIC ---
 // Make accessible globally
+// --- CART LOGIC ---
+// Make accessible globally
 window.addToCart = function (id) {
-    const item = menuData.find(i => i.id === id);
-    if (!item) return;
+    console.log("Adding to cart, ID:", id);
+    const item = menuData.find(i => i.id === Number(id));
+    if (!item) {
+        console.error("Item not found:", id);
+        return;
+    }
 
-    const existing = cart.find(i => i.id === id);
+    const existing = cart.find(i => i.id === Number(id));
     if (existing) {
         existing.qty++;
     } else {

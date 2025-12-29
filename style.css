@@ -170,9 +170,12 @@ body {
     color: var(--dark);
 }
 
+/* PRICE FORMATTING */
 .price {
     color: var(--red);
     font-weight: 700;
+    white-space: nowrap;
+    /* Fix wrapping */
 }
 
 .desc {
@@ -180,6 +183,29 @@ body {
     font-size: 0.9rem;
     color: var(--gray-text);
     line-height: 1.5;
+}
+
+/* ... */
+
+/* CART FAB & MODAL */
+.cart-fab {
+    position: fixed;
+    /* Lift up to avoid overlap with reserve button */
+    bottom: 90px;
+    right: 20px;
+    background: var(--red);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 20px rgba(200, 16, 46, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s;
 }
 
 /* FEATURES (Why Us) */
@@ -359,8 +385,9 @@ footer h3 {
 /* CART FAB & MODAL */
 .cart-fab {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    /* Lift up to avoid overlap with reserve button */
+    bottom: 90px;
+    right: 20px;
     background: var(--red);
     color: white;
     width: 60px;
