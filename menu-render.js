@@ -30,8 +30,13 @@ function renderMenu(category) {
         const card = document.createElement("div");
         card.classList.add("card");
 
+        let imageHtml = "";
+        if (item.img) {
+            imageHtml = `<img src="${item.img}" alt="${item.name}">`;
+        }
+
         card.innerHTML = `
-            <img src="${item.img}" alt="${item.name}">
+            ${imageHtml}
             <div class="card-body">
                 <div class="card-title">
                     <span>${item.name}</span>
