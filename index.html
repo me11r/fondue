@@ -28,22 +28,49 @@
             <span class="subtitle">Остров европейского уюта в Астане</span>
             <h1>Fondue</h1>
             <p class="tagline">Swiss Resto Du Club</p>
+            <!-- Fixed button link functionality handled in simplified header structure or standard a tag -->
             <a href="https://wa.me/77067179070" class="hero-btn">Забронировать стол</a>
         </div>
     </header>
 
     <!-- О ресторане -->
+    <!-- О ресторане (REELS STYLE) -->
     <section class="about">
-        <div class="about-container">
-            <video autoplay muted loop playsinline class="about-video">
-                <source src="images/AQMVnCxQ_gu1p7ZQyCVQ09qzXOMK9WXkK_tDX3EMgMDwJrRlPZPlEANuG4etkxH.mp4"
-                    type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-            <div class="about-text">
-                <h2>О концепции</h2>
-                <p>Fondue — это остров европейского уюта в центре Астаны. Мы предлагаем лучшие швейцарские фондю,
-                    раклеты и завтраки, созданные с любовью к деталям.</p>
+        <div class="about-text-top">
+            <h2>О концепции</h2>
+            <p>Fondue — это остров европейского уюта в центре Астаны. Мы предлагаем лучшие швейцарские фондю,
+                раклеты и завтраки.</p>
+        </div>
+
+        <div class="reels-container">
+            <!-- Video 1 -->
+            <div class="reel-item">
+                <video autoplay muted loop playsinline poster="">
+                    <source src="images/AQMVnCxQ_gu1p7ZQyCVQ09qzXOMK9WXkK_tDX3EMgMDwJrRlPZPlEANuG4etkxH.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <!-- Video 2 -->
+            <div class="reel-item">
+                <video autoplay muted loop playsinline>
+                    <source
+                        src="images/SaveClip.App_AQMxi2xQFnjzCn_c_LYKM1IVSViBwVvZsYbYPA3s88FnN6VsKa8IWTuV9tcDKUaxT0qe9TBWbvnNzLDgBDGyPNFLNqj2t5a6pSvxH1U.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <!-- Video 3 -->
+            <div class="reel-item">
+                <video autoplay muted loop playsinline>
+                    <source
+                        src="images/SaveClip.App_AQOTuIIOZo3MDjmFPb71QZsldNQDl3FThpbmYp4jAmnBP5zcA8Gyut9x2LDNh1_kd91JYJZ0sM-94VXDKz8cQfaYgDEGyupcTIKWrU8.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <div class="reel-item">
+                <video autoplay muted loop playsinline>
+                    <source src="images/AQMVnCxQ_gu1p7ZQyCVQ09qzXOMK9WXkK_tDX3EMgMDwJrRlPZPlEANuG4etkxH.mp4"
+                        type="video/mp4">
+                </video>
             </div>
         </div>
     </section>
@@ -82,9 +109,9 @@
     <section class="gallery">
         <h2>Галерея</h2>
         <div class="gallery-grid">
-            <img src="images/ce2e986d-4f57-4cb0-a71c-4a44e4d3990a.jpg" alt="Фото блюда">
-            <img src="images/6ed0aafc-05c4-4657-bda3-85b9fc181802.jpg" alt="Фото ресторана">
-            <img src="images/5262632d-b938-4e0b-a7c4-5091b09b6760.jpg" alt="Интерьер">
+            <img src="images/photo_2025-12-28_20-02-19.jpg" alt="Интерьер">
+            <img src="images/photo_2025-12-28_20-02-20%20(2).jpg" alt="Блюдо">
+            <img src="images/photo_2025-12-28_20-02-20.jpg" alt="Атмосфера">
         </div>
     </section>
 
@@ -126,6 +153,33 @@
     <script src="menu-data.js"></script>
     <script src="menu-render.js"></script>
     <script src="main.js"></script>
+
+    <!-- CART OVERLAY -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Ваш заказ</h3>
+                <button id="close-cart">&times;</button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Items go here -->
+                <p class="empty-msg">Корзина пуста</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cart-total-price">0 ₸</span>
+                </div>
+                <button class="checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING CART BTN -->
+    <div class="cart-fab" id="cart-fab">
+        <i class="fas fa-shopping-basket"></i>
+        <span class="badger" id="cart-count">0</span>
+    </div>
 
 </body>
 
